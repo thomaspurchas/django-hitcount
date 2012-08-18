@@ -9,8 +9,12 @@ register = template.Library()
 
 
 def get_target_ctype_pk(context, object_expr):
-    # I don't really understand how this is working, but I took it from the
-    # comment app in django.contrib and the removed it from the Node.
+    # This works by using template machinery to convert the object
+    # name passed in the tag arguments into the actual object.
+    # Really all this does is retreve the object referance from
+    # the context used to compile the template. Doing it this way
+    # just means that we can deal with every possiable method
+    # of passing an object.
     try:
         obj = object_expr.resolve(context)
     except template.VariableDoesNotExist:
