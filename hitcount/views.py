@@ -88,7 +88,6 @@ def update_hit_count_ajax(request):
 
     See template tags for how to implement.
     '''
-
     # make sure this is an ajax request
     if not request.is_ajax():
         raise Http404()
